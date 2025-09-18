@@ -1,0 +1,5 @@
+[console_scripts]
+embodiedai-grasp = embodiedai_mvp.mvp_nodes.grasp_action_server:main
+embodiedai-mcp = embodiedai_mvp.mcp_server.server:main
+embodiedai-sim = embodiedai_mvp.mvp_nodes.sim_node:main
+embodiedai-vision = embodiedai_mvp.mvp_nodes.vision_node:main

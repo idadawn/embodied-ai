@@ -1,0 +1,20 @@
+# Node
+node_modules/
+.pnpm-store/
+.next/
+.next-cache/
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+uv.lock
+
+# Logs
+*.log
+
+# Env
+.env
+.env.*
+

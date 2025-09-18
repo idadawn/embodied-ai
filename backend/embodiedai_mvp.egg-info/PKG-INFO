@@ -1,0 +1,69 @@
+Metadata-Version: 2.4
+Name: embodiedai-mvp
+Version: 0.1.0
+Summary: Embodied AI MVP backend with ROS2, MuJoCo, and Rerun integration.
+Author: EmbodiedAI Team
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: aiohttp>=3.9.5
+Requires-Dist: mujoco>=3.0.0
+Requires-Dist: numpy>=1.26
+Requires-Dist: opencv-python>=4.10
+Requires-Dist: pydantic>=2.8
+Requires-Dist: PyYAML>=6.0
+Requires-Dist: rerun-sdk[web]>=0.15.0
+Requires-Dist: rosbags>=0.10.3
+Requires-Dist: transforms3d>=0.4.2
+Requires-Dist: typer>=0.12.3
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23; extra == "dev"
+Requires-Dist: ruff>=0.6.9; extra == "dev"
+Provides-Extra: ros
+
+# EmbodiedAI MVP Backend
+
+This package contains the ROS 2 simulation nodes, the MCP HTTP server, and supporting utilities for the EmbodiedAI MVP.
+
+## Installation
+
+### Using uv (recommended)
+
+```bash
+uv sync
+```
+
+### Using pip
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -e .[dev]
+```
+
+## Launching the stack
+
+```bash
+source /opt/ros/humble/setup.bash
+ros2 launch embodiedai_mvp sim.launch.py
+```
+
+The launch file starts:
+- `simulation_node` – MuJoCo-driven scene publisher with Rerun logging
+- `vision_node` – stubbed pose estimation service
+- `grasp_action_server` – simulated gripper action server
+- `mcp_server` – MCP bridge exposing REST endpoints for the frontend
+
+## Standalone processes
+
+Each executable supports `--config /path/to/app.yaml` to override the default configuration file at `config/app.yaml`.
+
+## Tests
+
+```bash
+uv run pytest
+```
+
+The test suite currently validates that the fallback `BrainClient` yields a grasp plan.
+

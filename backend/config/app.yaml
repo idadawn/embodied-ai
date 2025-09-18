@@ -1,0 +1,14 @@
+simulation:
+  mujoco_model_path: "../urdf/mjcf/embodiedai_hand.xml"
+  control_rate_hz: 50.0
+  desk_half_extents: [0.5, 0.5, 0.1]
+  desk_center: [0.0, 0.0, 0.1]
+rerun:
+  enabled: true
+  web_port: 9876
+mcp:
+  host: 0.0.0.0
+  port: 8080
+  allowed_origins:
+    - "http://localhost:3000"
+    - "https://localhost:3000"
