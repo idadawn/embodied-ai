@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip python3-venv python3-setuptools python3-wheel git \
     libgl1 libglib2.0-0 libglfw3 \
     ros-humble-control-msgs ros-humble-geometry-msgs ros-humble-sensor-msgs ros-humble-example-interfaces \
+    ros-humble-rmw-cyclonedds-cpp \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
